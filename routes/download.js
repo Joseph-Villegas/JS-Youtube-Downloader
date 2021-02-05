@@ -6,9 +6,10 @@ const router = express.Router();
 router.use(cors());
 
 router.get("/mp3", async (req, res) => {
-    if (!req.query.url) return res.json({ success: false, msg: "Missing URL" }); 
+    if (!req.query.url) return res.redirect('/'); 
     
     const url = req.query.url;
+    console.log(`URL: ${url}`);
     let title = "audio"; // set a default title
 
     try {
@@ -21,12 +22,12 @@ router.get("/mp3", async (req, res) => {
         ytdl(url, { format: "mp3", filter: "audioonly" }).pipe(res);
     } catch (err) {
       console.error(err);
-      return res.json({ success: false, msg: "Invalid URL" });
+      return res.redirect('/');
     }
 });
 
 router.get("/mp4", async (req, res) => {
-    if (!req.query.url) return res.json({ success: false, msg: "Missing URL" }); 
+    if (!req.query.url) return res.redirect('/');
 
     const url = req.query.url;
     let title = "video";
@@ -41,7 +42,7 @@ router.get("/mp4", async (req, res) => {
         ytdl(url, { format: "mp4" }).pipe(res);
     } catch (err) {
       console.error(err);
-      return res.json({ success: false, msg: "Invalid URL" });
+      return res.redirect('/');
     }
 });
 

@@ -24,9 +24,9 @@
 <h5 class="text">Enter a Video URL to Download</h5>
 
 
-<form class="form-inline container" action="/action_page.php">
+<form class="form-inline container" id="download">
     <label for="url">URL:</label>
-    <input type="text" id="url" placeholder="Enter a YouTube URL" name="url">
+    <input type="text" id="url" placeholder="Enter a YouTube URL" name="url" autocomplete="off" required>
     <label for="file_type">File Type:</label>
     <select id="file_type" name="file_type">
         <option value="mp3">mp3</option>
@@ -37,8 +37,10 @@
 
 <h5 class="text">Search for a Video to Download</h5>
 
-<form class="form-inline container" action="/action_page.php">
+<form class="form-inline container" id="search">
     <label for="title">Title:</label>
-    <input type="text" id="title" placeholder="Search for a Video by Title" name="title">
+    <input type="text" id="title" placeholder="Search for a Video by Title" name="title" autocomplete="off" required>
     <button type="submit">Search <i class="fa fa-search"></i></button>
 </form>
+
+<script src="./javascripts/main.js"></script>
